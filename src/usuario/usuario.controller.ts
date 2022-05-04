@@ -7,7 +7,7 @@ export class UsuarioController {
   constructor(private usuarioService: UsuarioService) {}
 
   @Post()
-  public cria(@Body() usuario: Usuario) {
+  public cria(@Body() usuario: Usuario): Usuario {
     const usuarioCriado = this.usuarioService.cria(usuario);
 
     return usuarioCriado;
