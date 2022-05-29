@@ -3,7 +3,7 @@ import { Usuario } from './usuario.entity';
 
 @Injectable()
 export class UsuarioService {
-  private usuarios: Array<Usuario>;
+  private usuarios: Array<Usuario> = [];
 
   public buscaNomeUsuario(nome: string): Usuario {
     const usuario = this.usuarios.find((usuario) => usuario.nome === nome);
