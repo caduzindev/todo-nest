@@ -1,5 +1,6 @@
 import { Exclude, Expose } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { UsuarioTamanhoSenhaValidator } from './usuario-tamanho-senha-validator';
 import { UsuarioUnicoValidation } from './usuario-unico-validator';
 
 export class Usuario {
@@ -35,6 +36,9 @@ export class Usuario {
   })
   @IsNotEmpty({
     message: 'senha é obrigatório',
+  })
+  @UsuarioTamanhoSenhaValidator({
+    message: 'senha deve ter no minimo 5 caracteres',
   })
   senha: string;
 
