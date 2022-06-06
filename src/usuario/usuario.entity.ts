@@ -1,9 +1,13 @@
+import { Exclude, Expose } from 'class-transformer';
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 import { UsuarioUnicoValidation } from './usuario-unico-validator';
 
 export class Usuario {
   id: number;
 
+  @Expose({
+    name: 'username',
+  })
   @UsuarioUnicoValidation({
     message: 'nome precisa ser único',
   })
@@ -15,11 +19,20 @@ export class Usuario {
   })
   nome: string;
 
+  @Expose({
+    name: 'email',
+  })
   @IsEmail({
     message: 'email invalido',
   })
   email: string;
 
+  @Expose({
+    name: 'password',
+  })
+  @Exclude({
+    toPlainOnly: true,
+  })
   @IsNotEmpty({
     message: 'senha é obrigatório',
   })
@@ -29,5 +42,9 @@ export class Usuario {
     message: 'nsomeCompleto é obrigatório',
   })
   nomeCompleto: string;
+
+  @Expose({
+    name: 'joinDate',
+  })
   dataDeEntrada: Date;
 }
